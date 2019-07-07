@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'apps/StartScaffold.dart';
+import 'apps/MainMenuApp.dart';
 
 void main(){
   //in function yek widjet migirad ke widgete roote barname shomast
@@ -7,6 +7,6 @@ void main(){
   //dar an widgeti ra be surate tudartu new nemikonand
 
   runApp(
-      new FirstAppWithScaffold()
+      new MainMenuRoute()
   );
 }

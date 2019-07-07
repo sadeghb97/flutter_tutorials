@@ -6,7 +6,8 @@ class HelloApp extends Container{
       child: new Text("Hello Flutter!",
           textDirection: TextDirection.ltr,
           style: new TextStyle(
-              fontSize: 36
+              fontSize: 36,
+              color: Colors.white
           )
       )
     ),
