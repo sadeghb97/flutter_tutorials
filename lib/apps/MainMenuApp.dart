@@ -3,6 +3,8 @@ import 'HelloApp.dart';
 import 'StartScaffold.dart';
 import 'StatefulIntro.dart';
 import 'ShoppingCardApp.dart';
+import 'FirstAppWithBottomNavigation.dart';
+import 'SecondWayBottomNavigation.dart';
 
 class Route{
   String name;
@@ -14,7 +16,9 @@ List routes = [
   Route("Hello Flutter", new HelloApp()),
   Route("First App With Flutter", new FirstAppWithScaffold()),
   Route("Stateful Widget Intro", new StatefulApp()),
-  Route("Shopping Items", new ShoppingCardApp())
+  Route("Shopping Items", new ShoppingCardApp()),
+  Route("Insta With First Bottom Navigation", new BottomNavigationApp()),
+  Route("Insta With Second Bottom Navigation", new SecondBottomNavigationApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
