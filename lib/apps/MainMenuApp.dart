@@ -5,6 +5,7 @@ import 'StatefulIntro.dart';
 import 'ShoppingCardApp.dart';
 import 'FirstAppWithBottomNavigation.dart';
 import 'SecondWayBottomNavigation.dart';
+import 'InstagramStories.dart';
 
 class Route{
   String name;
@@ -18,7 +19,8 @@ List routes = [
   Route("Stateful Widget Intro", new StatefulApp()),
   Route("Shopping Items", new ShoppingCardApp()),
   Route("Insta With First Bottom Navigation", new BottomNavigationApp()),
-  Route("Insta With Second Bottom Navigation", new SecondBottomNavigationApp())
+  Route("Insta With Second Bottom Navigation", new SecondBottomNavigationApp()),
+  Route("Instagram With Stories", new InstagramStoriesApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
