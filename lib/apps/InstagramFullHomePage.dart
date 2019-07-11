@@ -382,6 +382,16 @@ class InstaPost extends StatelessWidget {
                 ]
             ),
           ),
+
+          //agar meghdare cross axis alignment ra ruye stretch nagozarim
+          //in khane az sotune asli be andaze text faza eshghal mikonad
+          //va dar vasat gharar migirad
+          //ama agar in kar ra konim widgete padding tamame arz ra gerefte
+          //text ham tamame arze widgete padding ra gerefte
+          //va dar natige text dar samte chap be namayesh dar miyabad
+          //meghdare cross axis alignment ra ruye start ham agar begozarim
+          //hamin etefagh mioftad va text dar samte chap namayesh miyabad
+          //vali text va widgete padding tamame arze safhe ra nemigirand
           new Padding(
             padding: EdgeInsets.symmetric(horizontal: 12.0),
             child: new Text(

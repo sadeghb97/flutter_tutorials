@@ -7,6 +7,7 @@ import 'FirstAppWithBottomNavigation.dart';
 import 'SecondWayBottomNavigation.dart';
 import 'InstagramStories.dart';
 import 'InstagramFullHomePage.dart';
+import 'package:flutter/rendering.dart';
 
 class Route{
   String name;
@@ -63,7 +64,16 @@ class MainMenuScaffold extends StatelessWidget{
         floatingActionButton: new FloatingActionButton(
             child: new Icon(Icons.widgets),
             tooltip: "Floating Action Button",
-            onPressed: () => print("Floating Action Button Pressed!")
+            onPressed: () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context){
+                      //agar variable zir ba true set shavad atrafe tamame widget ha border khahim dasht
+                      debugPaintSizeEnabled = !debugPaintSizeEnabled;
+                      return new MainMenuRoute();
+                    }
+                )
+            )
         )
     );
   }
