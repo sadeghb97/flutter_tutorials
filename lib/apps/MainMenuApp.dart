@@ -10,6 +10,7 @@ import 'InstagramStories.dart';
 import 'InstagramFullHomePage.dart';
 import 'InstagramRTLHomePage.dart';
 import 'WhatsappTabBar.dart';
+import 'WhatsappHomePage.dart';
 
 class Route{
   String name;
@@ -27,7 +28,8 @@ List routes = [
   Route("Instagram With Stories", new InstagramStoriesApp()),
   Route("Instagram Full Home Page", new InstagramFullHomePageApp()),
   Route("Instagram Persin Home Page", new InstagramRTLHomePageApp()),
-  Route("Whatsapp TabBar", new WhatsappTabBarApp())
+  Route("Whatsapp TabBar", new WhatsappTabBarApp()),
+  Route("Whatsapp Home Page", new WhatsappHomePageApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
