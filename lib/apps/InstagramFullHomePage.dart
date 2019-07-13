@@ -357,27 +357,27 @@ class InstaPost extends StatelessWidget {
             child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  new IconButton(
-                      icon: new Icon(FontAwesomeIcons.bookmark, color: Colors.black),
-                      onPressed: null
-                  ),
                   new Row(
                     children: <Widget>[
                       new IconButton(
-                          icon: new Icon(FontAwesomeIcons.paperPlane, color: Colors.black),
-                          onPressed: null
+                        icon: new Icon(FontAwesomeIcons.heart, color: Colors.black),
+                        color: Colors.black,
+                        onPressed: null
                       ),
                       new IconButton(
-                          icon: new Icon(FontAwesomeIcons.comment, color: Colors.black),
-                          color: Colors.black,
-                          onPressed: null
+                        icon: new Icon(FontAwesomeIcons.comment, color: Colors.black),
+                        color: Colors.black,
+                        onPressed: null
                       ),
                       new IconButton(
-                          icon: new Icon(FontAwesomeIcons.heart, color: Colors.black),
-                          color: Colors.black,
-                          onPressed: null
+                        icon: new Icon(FontAwesomeIcons.paperPlane, color: Colors.black),
+                        onPressed: null
                       )
                     ],
+                  ),
+                  new IconButton(
+                      icon: new Icon(FontAwesomeIcons.bookmark, color: Colors.black),
+                      onPressed: null
                   )
                 ]
             ),
