@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'HelloApp.dart';
 import 'StartScaffold.dart';
 import 'StatefulIntro.dart';
@@ -7,7 +8,7 @@ import 'FirstAppWithBottomNavigation.dart';
 import 'SecondWayBottomNavigation.dart';
 import 'InstagramStories.dart';
 import 'InstagramFullHomePage.dart';
-import 'package:flutter/rendering.dart';
+import 'InstagramRTLHomePage.dart';
 
 class Route{
   String name;
@@ -23,7 +24,8 @@ List routes = [
   Route("Insta With First Bottom Navigation", new BottomNavigationApp()),
   Route("Insta With Second Bottom Navigation", new SecondBottomNavigationApp()),
   Route("Instagram With Stories", new InstagramStoriesApp()),
-  Route("Instagram Full Home Page", new InstagramFullHomePageApp())
+  Route("Instagram Full Home Page", new InstagramFullHomePageApp()),
+  Route("Instagram Persin Home Page", new InstagramRTLHomePageApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
