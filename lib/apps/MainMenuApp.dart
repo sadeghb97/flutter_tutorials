@@ -30,6 +30,7 @@ List routes = [
   Route("Instagram Full Home Page", new InstagramFullHomePageApp()),
   Route("Instagram Persin Home Page", new InstagramRTLHomePageApp()),
   Route("Whatsapp TabBar", new WhatsappTabBarApp()),
+  Route("Whatsapp Home Page", new WhatsappHomePageApp()),
   Route("Whatsapp Nested Scroll View", new WhatsappNestedScrollViewApp())
 ];
 
