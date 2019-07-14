@@ -12,6 +12,7 @@ import 'InstagramRTLHomePage.dart';
 import 'WhatsappTabBar.dart';
 import 'WhatsappHomePage.dart';
 import 'WhatsappNestedScrollView.dart';
+import 'WhatsappNavigations.dart';
 
 class Route{
   String name;
@@ -31,7 +32,8 @@ List routes = [
   Route("Instagram Persin Home Page", new InstagramRTLHomePageApp()),
   Route("Whatsapp TabBar", new WhatsappTabBarApp()),
   Route("Whatsapp Home Page", new WhatsappHomePageApp()),
-  Route("Whatsapp Nested Scroll View", new WhatsappNestedScrollViewApp())
+  Route("Whatsapp Nested Scroll View", new WhatsappNestedScrollViewApp()),
+  Route("Whatsapp Navigations", new WhatsappNavigationsApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
