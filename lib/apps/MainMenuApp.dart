@@ -15,6 +15,7 @@ import 'WhatsappHomePage.dart';
 import 'WhatsappNestedScrollView.dart';
 import 'WhatsappNavigations.dart';
 import 'WhatsappSplashScreen.dart';
+import 'FirstAnimation.dart';
 
 class Route{
   String name;
@@ -36,14 +37,15 @@ List routes = [
   Route("Whatsapp Home Page", new WhatsappHomePageApp()),
   Route("Whatsapp Nested Scroll View", new WhatsappNestedScrollViewApp()),
   Route("Whatsapp Navigations", new WhatsappNavigationsApp()),
-  Route("Whatsapp Splash Screen", new WhatsappSplashScreenApp())
+  Route("Whatsapp Splash Screen", new WhatsappSplashScreenApp()),
+  Route("First Animation", new FirstAnimationApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        title: "MaterialApp",
+        title: "Flutter Basic Examples",
         home: new MainMenuBody()
     );
   }
