@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'WhatsappNavigations.dart';
+import 'package:first_flutter/general/ChatModel.dart';
+import 'package:first_flutter/general/RoundAvatar.dart';
 
 class WhatsappPrivateChat extends StatelessWidget {
   ChatModel data;
@@ -19,7 +20,7 @@ class WhatsappPrivateChat extends StatelessWidget {
                   onTap: () => Navigator.pop(context),
                 ),
                 new SizedBox(width: 8),
-                new Avatar(data.avatarUrl, 45, data.isLocal),
+                new RoundAvatar(data.avatarUrl, 45, data.isLocal),
                 new Text(data.name, style: new TextStyle(fontSize: 18))
               ],
             ),

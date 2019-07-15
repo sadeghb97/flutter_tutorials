@@ -13,6 +13,7 @@ import 'WhatsappTabBar.dart';
 import 'WhatsappHomePage.dart';
 import 'WhatsappNestedScrollView.dart';
 import 'WhatsappNavigations.dart';
+import 'WhatsappSplashScreen.dart';
 
 class Route{
   String name;
@@ -33,7 +34,8 @@ List routes = [
   Route("Whatsapp TabBar", new WhatsappTabBarApp()),
   Route("Whatsapp Home Page", new WhatsappHomePageApp()),
   Route("Whatsapp Nested Scroll View", new WhatsappNestedScrollViewApp()),
-  Route("Whatsapp Navigations", new WhatsappNavigationsApp())
+  Route("Whatsapp Navigations", new WhatsappNavigationsApp()),
+  Route("Whatsapp Splash Screen", new WhatsappSplashScreenApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{

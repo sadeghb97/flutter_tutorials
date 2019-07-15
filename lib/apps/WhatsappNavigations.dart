@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:first_flutter/general/ChatModel.dart';
+import 'package:first_flutter/general/RoundAvatar.dart';
 import 'WhatsappPrivateChat.dart';
 
 class WhatsappNavigationsApp extends StatelessWidget {
@@ -156,28 +158,6 @@ class WhatsappBodyState extends State<WhatsappBody> with SingleTickerProviderSta
   }
 }
 
-class Avatar extends StatelessWidget {
-  String avatarUrl;
-  double height;
-  bool isLocal;
-  Avatar(this.avatarUrl, this.height, this.isLocal);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-        margin: EdgeInsetsDirectional.only(end: 8),
-        height: height,
-        width: height,
-        decoration: new BoxDecoration(
-            shape: BoxShape.circle,
-            image: new DecorationImage(
-                image: isLocal ? new AssetImage(avatarUrl) : new NetworkImage(avatarUrl)
-            )
-        )
-    );
-  }
-}
-
 class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -188,7 +168,11 @@ class ChatScreen extends StatelessWidget {
             children: <Widget>[
               new GestureDetector(
                 child: new ListTile(
-                  leading: new Avatar(dummyData[index].avatarUrl, 45, dummyData[index].isLocal),
+                  leading: new RoundAvatar(
+                      dummyData[index].avatarUrl,
+                      45,
+                      dummyData[index].isLocal
+                  ),
                   title: new Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -331,16 +315,6 @@ class NewGroupScreen extends StatelessWidget {
         )
     );
   }
-}
-
-class ChatModel {
-  final String name;
-  final String message;
-  final String time;
-  final String avatarUrl;
-  final bool isLocal;
-
-  ChatModel({this.name, this.message, this.time, this.avatarUrl, this.isLocal});
 }
 
 List<ChatModel> dummyData = [

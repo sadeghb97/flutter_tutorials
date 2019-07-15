@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:first_flutter/general/RoundAvatar.dart';
 
 final IMAGE_URL = "https://www.gravatar.com/avatar/52f0fbcbedee04a121cba8dad1174462?s=150&d=mm&r=g";
 final POST_URL = "https://roocket.ir/public/images/2018/9/23/flutter_eman_blog.png";
@@ -273,29 +274,6 @@ class Stories extends StatelessWidget {
   }
 }
 
-class Avatar extends StatelessWidget {
-  String avatarUrl;
-  double height;
-  bool isLocal;
-  Avatar(this.avatarUrl, this.height, this.isLocal);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-        margin: EdgeInsets.only(right: 8),
-        height: height,
-        width: height,
-        decoration: new BoxDecoration(
-            shape: BoxShape.circle,
-            image: new DecorationImage(
-                image: isLocal ? new AssetImage(avatarUrl) : new NetworkImage(avatarUrl)
-            )
-        )
-    );
-  }
-
-}
-
 class ExpandedImage extends StatelessWidget {
   String imageUrl;
   bool isLocal;
@@ -333,7 +311,11 @@ class InstaPost extends StatelessWidget {
                 children: <Widget>[
                   new Row(
                     children: <Widget>[
-                      new Avatar(mediaDetails.userAvatarUrl, 45, mediaDetails.isLocal),
+                      new RoundAvatar(
+                          mediaDetails.userAvatarUrl,
+                          45,
+                          mediaDetails.isLocal
+                      ),
                       new Text(
                           mediaDetails.username,
                           style: new TextStyle(fontWeight: FontWeight.bold)
@@ -403,7 +385,11 @@ class InstaPost extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
             child: new Row(
               children: <Widget>[
-                new Avatar(mediaDetails.userAvatarUrl, 30, mediaDetails.isLocal),
+                new RoundAvatar(
+                    mediaDetails.userAvatarUrl,
+                    30,
+                    mediaDetails.isLocal
+                ),
                 new Expanded(
                     child: new TextField(
                       decoration: new InputDecoration(
