@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:first_flutter/general/SingletoneObject.dart';
 import 'HelloApp.dart';
 import 'StartScaffold.dart';
 import 'StatefulIntro.dart';
@@ -43,17 +44,47 @@ class MainMenuRoute extends StatelessWidget{
   Widget build(BuildContext context) {
     return new MaterialApp(
         title: "MaterialApp",
-        home: new MainMenuScaffold()
+        home: new MainMenuBody()
     );
   }
 }
 
-class MainMenuScaffold extends StatelessWidget{
+class MainMenuBody extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => new MainMenuBodyState();
+}
+
+class MainMenuBodyState extends State<MainMenuBody> {
+  SingletoneObject singletone = new SingletoneObject();
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-            title: new Text("Flutter Basic Examples")
+          title: new Text("Flutter Basic Examples"),
+          actions: <Widget>[
+            new PopupMenuButton<String>(
+                itemBuilder: (context){
+                  return [
+                    new PopupMenuItem(
+                        value: "push_replacement",
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            new Text("Push Replacement"),
+                            singletone.mainMenuPushReplacement ? new Icon(Icons.check_box)
+                                : new Icon(Icons.check_box_outline_blank)
+                          ],
+                        )
+                    )
+                  ];
+                },
+                onSelected: (selected){
+                  if(selected == "push_replacement")
+                    setState(() => singletone.mainMenuPushReplacement = !singletone.mainMenuPushReplacement);
+                }
+            )
+          ]
         ),
         body: new ListView(
           padding: EdgeInsets.symmetric(vertical: 8),
@@ -65,7 +96,14 @@ class MainMenuScaffold extends StatelessWidget{
                     fontWeight: FontWeight.bold
                 ),
               ),
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => item.widget)),
+              onTap: singletone.mainMenuPushReplacement ? () => Navigator.pushReplacement(
+                  context,
+                  new MaterialPageRoute(builder: (context) => item.widget)
+                )
+                : () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(builder: (context) => item.widget)
+              ),
               leading: new CircleAvatar(
                 backgroundColor: Theme.of(context).primaryColor,
                 child: Text(item.name[0]),
@@ -89,5 +127,4 @@ class MainMenuScaffold extends StatelessWidget{
         )
     );
   }
-
 }

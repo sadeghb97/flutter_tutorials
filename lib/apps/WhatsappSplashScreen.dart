@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:first_flutter/general/ChatModel.dart';
 import 'package:first_flutter/general/RoundAvatar.dart';
+import 'package:first_flutter/general/SingletoneObject.dart';
+import 'MainMenuApp.dart';
 import 'WhatsappPrivateChat.dart';
 
 class WhatsappSplashScreenApp extends StatelessWidget {
@@ -127,6 +129,8 @@ class WhatsappBodyState extends State<WhatsappBody> with SingleTickerProviderSta
 
   @override
   Widget build(BuildContext context) {
+    SingletoneObject singletone = new SingletoneObject();
+
     SliverAppBar mainAppBar = new SliverAppBar(
         title: new Text("واتساپ"),
         elevation: 5,
@@ -159,6 +163,13 @@ class WhatsappBodyState extends State<WhatsappBody> with SingleTickerProviderSta
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[new Text("تنظیمات")]
                       )
+                  ),
+                  if(singletone.mainMenuPushReplacement) new PopupMenuItem(
+                      value: "quit",
+                      child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[new Text("خروج به منو")]
+                      )
                   )
                 ];
               },
@@ -173,6 +184,14 @@ class WhatsappBodyState extends State<WhatsappBody> with SingleTickerProviderSta
                   Navigator.pushNamed(
                       context,
                       WhatsappSplashScreenApp.NEW_GROUP_ROUTE
+                  );
+                }
+                else if(selected == "quit") {
+                  Navigator.pushReplacement(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) => new MainMenuRoute()
+                      )
                   );
                 }
               }

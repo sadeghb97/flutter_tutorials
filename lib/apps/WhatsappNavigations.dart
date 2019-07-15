@@ -1,7 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:first_flutter/general/ChatModel.dart';
 import 'package:first_flutter/general/RoundAvatar.dart';
+import 'package:first_flutter/general/SingletoneObject.dart';
+import 'MainMenuApp.dart';
 import 'WhatsappPrivateChat.dart';
+
+/*Most of the time you want to use Scaffold as a top widget for a new page/screen,
+but if you accidentally use MaterialApp instead, nothing warns you.
+
+What happens, is that MaterialApp creates a new Navigator,
+so if you switch from one page with MaterialApp to another,
+you now have two Navigators in the widget tree.
+
+The call Navigator.of(context) looks for the closest Navigator,
+so it will use the one, newly created in your MoviesPage.
+As the history of your route transitions is stored in a first Navigator,
+this one cant pop back – it has empty route history.
+
+Hence, the black screen.
+Long story short, to fix this, just use Scaffold as a top widget instead of
+MaterialApp in all nested screens.*/
+
+//dar tamame barname shoma bayad yek Widgete MaterialApp dashte bashid
+//agar dar widget tree do ya bishtar MaterialApp dashte bashid be ezaye har
+//MaterialApp yek Navigator khahid dasht
+//Vaghti az Navigator estefade mikonid az nazdik tarin navigator estefade mishavad
+// dar in halat agar dokme bargashte sakht afzari feshorde shavad ehtemalan be dorosti
+//be route haye ghabli bar nakhahid gasht
 
 class WhatsappNavigationsApp extends StatelessWidget {
   static final String SETTINGS_ROUTE = "/settings";
@@ -53,6 +78,8 @@ class WhatsappBodyState extends State<WhatsappBody> with SingleTickerProviderSta
 
   @override
   Widget build(BuildContext context) {
+    SingletoneObject singletone = new SingletoneObject();
+
     SliverAppBar mainAppBar = new SliverAppBar(
         title: new Text("واتساپ"),
         elevation: 5,
@@ -85,6 +112,13 @@ class WhatsappBodyState extends State<WhatsappBody> with SingleTickerProviderSta
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[new Text("تنظیمات")]
                       )
+                  ),
+                  if(singletone.mainMenuPushReplacement) new PopupMenuItem(
+                      value: "quit",
+                      child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[new Text("خروج به منو")]
+                      )
                   )
                 ];
               },
@@ -99,6 +133,14 @@ class WhatsappBodyState extends State<WhatsappBody> with SingleTickerProviderSta
                   Navigator.pushNamed(
                       context,
                       WhatsappNavigationsApp.NEW_GROUP_ROUTE
+                  );
+                }
+                else if(selected == "quit") {
+                  Navigator.pushReplacement(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) => new MainMenuRoute()
+                      )
                   );
                 }
               }

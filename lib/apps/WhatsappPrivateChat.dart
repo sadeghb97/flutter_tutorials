@@ -79,7 +79,7 @@ class WhatsappPrivateChat extends StatelessWidget {
                         style: new TextStyle(fontSize: 16)
                     )
                   ]
-              )
+               )
             ]
           )
         )
