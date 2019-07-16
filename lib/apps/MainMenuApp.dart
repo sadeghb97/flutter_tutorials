@@ -17,6 +17,7 @@ import 'WhatsappNavigations.dart';
 import 'WhatsappSplashScreen.dart';
 import 'FirstAnimation.dart';
 import 'StaggeredAnimation.dart';
+import 'WhatsappLogin.dart';
 
 class Route{
   String name;
@@ -40,7 +41,8 @@ List routes = [
   Route("Whatsapp Navigations", new WhatsappNavigationsApp()),
   Route("Whatsapp Splash Screen", new WhatsappSplashScreenApp()),
   Route("First Animation", new FirstAnimationApp()),
-  Route("Staggered Animation", new StaggeredAnimationApp())
+  Route("Staggered Animation", new StaggeredAnimationApp()),
+  Route("Whatsapp Login Screen", new WhatsappLoginApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{

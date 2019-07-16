@@ -47,6 +47,7 @@ flutter:
     - assets/images/insta_logo.png
     - assets/images/whatsapp_icon.png
     - assets/images/wpvc_bg.jpg
+    - assets/images/icon_bg.png
     - assets/images/max_payne.png
     - assets/images/legend_max_payne.png
     - assets/images/young_max.jpg
