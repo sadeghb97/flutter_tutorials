@@ -148,8 +148,8 @@ class FirstAnimationBodyState extends State<FirstAnimationBody> with SingleTicke
               animation: animationController,
               builder: (context, child){
                 return new Container(
-                    height: animation.value,
-                    width: animation.value / imageModel.heightOnWidth,
+                    height: animation.value > 0 ? animation.value : 0,
+                    width: animation.value > 0 ? animation.value / imageModel.heightOnWidth : 0,
                     child: new Image.asset(imageModel.path)
                 );
               }
