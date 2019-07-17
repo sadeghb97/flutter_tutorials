@@ -88,7 +88,7 @@ class WhatsappPrivateChat extends StatelessWidget {
 }
 
 class WhatsappPrivateChatAnswer {
-  String messgae;
+  String message;
   IconData iconData;
-  WhatsappPrivateChatAnswer(this.messgae, this.iconData);
+  WhatsappPrivateChatAnswer(this.message, this.iconData);
 }

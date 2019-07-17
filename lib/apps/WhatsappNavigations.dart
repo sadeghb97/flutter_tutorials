@@ -256,7 +256,7 @@ class ChatScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   new Text(
-                      (result as WhatsappPrivateChatAnswer).messgae,
+                      (result as WhatsappPrivateChatAnswer).message,
                       style: new TextStyle(
                           fontFamily: "Vazir"
                       )
