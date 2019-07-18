@@ -40,14 +40,18 @@ class WhatsappLoginBodyState extends State<WhatsappLoginBody> with SingleTickerP
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  TextEditingController emailEditingController;
-  TextEditingController passwordEditingController;
+  //agar ruye yek textfield controller set konim
+  //bedune seda zadane setState mitavanim meghdare an text filed ra taghir dahim
+  //az tarighe property text dar controller mitavanim meghdare textfield ra begirim ya taghir dahim
+  //in behtarin rah baraye taghire meghdare textfield hast
+  //zira estefade az setState mitavanad baes shavad ke meghdare textfield dar
+  //sharayete nakhaste ham taghir konad
+  TextEditingController emailEditingController = new TextEditingController();
+  TextEditingController passwordEditingController = new TextEditingController();
   String emailValue;
   String passwordValue;
   bool wrongEmail = false;
   bool wrongPassword = false;
-  String storedEmail = "";
-  String storedPassword = "";
 
   @override
   void initState() {
@@ -56,16 +60,25 @@ class WhatsappLoginBodyState extends State<WhatsappLoginBody> with SingleTickerP
         duration: new Duration(milliseconds: 2500)
     );
 
-    SharedPreferences.getInstance().then((prefs){
-      setState(() {
-        storedEmail = prefs.containsKey("whatsapp_login_email")
-            ? prefs.getString("whatsapp_login_email")
-            : "";
+    emailEditingController.addListener(() {
+      if(wrongEmail) formKey.currentState.validate();
+    });
 
-        storedPassword = prefs.containsKey("whatsapp_login_password")
-            ? prefs.getString("whatsapp_login_password")
-            : "";
-      });
+    passwordEditingController.addListener(() {
+      if(wrongPassword) formKey.currentState.validate();
+    });
+
+    SharedPreferences.getInstance().then((prefs){
+      final String storedEmail = prefs.containsKey("whatsapp_login_email")
+          ? prefs.getString("whatsapp_login_email")
+          : "";
+
+      final String storedPassword = prefs.containsKey("whatsapp_login_password")
+          ? prefs.getString("whatsapp_login_password")
+          : "";
+
+      emailEditingController.text = storedEmail;
+      passwordEditingController.text = storedPassword;
 
       print("prefsEmail: $storedEmail");
       print("prefsPassword: $storedPassword");
@@ -84,17 +97,6 @@ class WhatsappLoginBodyState extends State<WhatsappLoginBody> with SingleTickerP
   Widget build(BuildContext context) {
     timeDilation = 0.8;
     final pageSize = MediaQuery.of(context).size;
-
-    emailEditingController = new TextEditingController(text: storedEmail);
-    passwordEditingController = new TextEditingController(text: storedPassword);
-
-    emailEditingController.addListener(() {
-      if(wrongEmail) formKey.currentState.validate();
-    });
-
-    passwordEditingController.addListener(() {
-      if(wrongPassword) formKey.currentState.validate();
-    });
 
     return new Scaffold(
       key: scaffoldKey,
@@ -196,12 +198,12 @@ class WhatsappLoginBodyState extends State<WhatsappLoginBody> with SingleTickerP
                 new FlatButton(
                   onPressed: (){
                     SharedPreferences.getInstance().then((prefs){
-                      setState(() {
-                        prefs.remove("whatsapp_login_email");
-                        prefs.remove("whatsapp_login_password");
-                        storedEmail = "";
-                        storedPassword = "";
-                      });
+                      prefs.remove("whatsapp_login_email");
+                      prefs.remove("whatsapp_login_password");
+                      emailEditingController.text = "";
+                      passwordEditingController.text = "";
+                      //storedEmail = "";
+                      //storedPassword = "";
                     });
                   },
                   child: new Text(
@@ -335,12 +337,12 @@ class MyInputField extends StatelessWidget {
           ),
           enabledBorder: new UnderlineInputBorder(
             borderSide: new BorderSide(
-              color: Colors.pinkAccent
+              color: Colors.cyanAccent
             )
           ),
           focusedBorder: new UnderlineInputBorder(
             borderSide: new BorderSide(
-              color: Colors.pinkAccent
+              color: Colors.cyanAccent
             )
           ),
           focusedErrorBorder: new UnderlineInputBorder(
