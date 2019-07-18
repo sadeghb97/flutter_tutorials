@@ -246,6 +246,10 @@ class WhatsappLoginBodyState extends State<WhatsappLoginBody> with SingleTickerP
                       SharedPreferences prefs = await SharedPreferences.getInstance();
                       prefs.setString("whatsapp_login_email", emailValue);
                       prefs.setString("whatsapp_login_password", passwordValue);
+                      prefs.setString(
+                          "whatsapp_api_token",
+                          responseMap['data']['api_token']
+                      );
 
                       await animationController.animateTo(1);
                       Navigator.of(context).pushReplacement(

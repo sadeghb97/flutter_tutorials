@@ -21,6 +21,7 @@ import 'WhatsappLogin.dart';
 import 'WhatsappFormValidation.dart';
 import 'WhatsappLoginHttpRequest.dart';
 import 'WhatsappCheckConnectionLogin.dart';
+import 'WhatsappFullNavigations.dart';
 
 class Route{
   String name;
@@ -48,7 +49,8 @@ List routes = [
   Route("Whatsapp Login Screen", new WhatsappLoginApp()),
   Route("Whatsapp Form Validation", new WhatsappFormValidationApp()),
   Route("Whatsapp Login Http Request", new WhatsappLoginHttpRequestApp()),
-  Route("Whatsapp Check Connection", new WhatsappCheckConnectionLoginApp())
+  Route("Whatsapp Check Connection", new WhatsappCheckConnectionLoginApp()),
+  Route("Whatsapp Full Navigations", new WhatsappFullNavigationsApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
