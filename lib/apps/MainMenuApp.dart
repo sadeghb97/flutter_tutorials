@@ -23,6 +23,7 @@ import 'WhatsappLoginHttpRequest.dart';
 import 'WhatsappCheckConnectionLogin.dart';
 import 'WhatsappFullNavigations.dart';
 import 'RoocketProducts.dart';
+import 'InfinitieStableRefreshableRoocketProducts.dart';
 
 class Route{
   String name;
@@ -52,7 +53,8 @@ List routes = [
   Route("Whatsapp Login Http Request", new WhatsappLoginHttpRequestApp()),
   Route("Whatsapp Check Connection", new WhatsappCheckConnectionLoginApp()),
   Route("Whatsapp Full Navigations", new WhatsappFullNavigationsApp()),
-  Route("Roocket Products Grid View", new RoocketProductsApp())
+  Route("Roocket Products Grid View", new RoocketProductsApp()),
+  Route("Infinitie Stable and Refreshable Roocket Products", new InfinitieStableRoocketProductsApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{

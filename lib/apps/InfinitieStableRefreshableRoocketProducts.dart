@@ -9,7 +9,7 @@ import 'package:first_flutter/general/RoocketProduct.dart';
 final String ROOCKET_PRODUCTS_URL = "http://roocket.org/api/products?page=";
 final scaffoldKey = GlobalKey<ScaffoldState>();
 
-class RoocketProductsApp extends StatelessWidget {
+class InfinitieStableRoocketProductsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -76,9 +76,11 @@ class ProductsScreen extends StatefulWidget {
   State<StatefulWidget> createState() => new ProductsScreenState();
 }
 
-class ProductsScreenState extends State<ProductsScreen> {
+class ProductsScreenState extends State<ProductsScreen> with AutomaticKeepAliveClientMixin<ProductsScreen>{
+  ScrollController scrollController = new ScrollController();
   List products = new List<RoocketProduct>();
   int currentPage = 1;
+  int lastPage = 0;
   bool gridViewMode = false;
   bool isLoading = true;
 
@@ -93,7 +95,19 @@ class ProductsScreenState extends State<ProductsScreen> {
   @override
   void initState() {
     super.initState();
-    fetchProducts(2);
+
+    scrollController.addListener((){
+      double maxScroll = scrollController.position.maxScrollExtent;
+      double currentScroll = scrollController.position.pixels;
+      print("$maxScroll - $currentScroll - ${maxScroll - currentScroll}");
+
+      if(maxScroll - currentScroll <= 200 && !isLoading && currentPage < lastPage) {
+        print("Load more ${currentPage + 1}");
+        fetchProducts(currentPage + 1);
+      }
+    });
+
+    fetchProducts(1);
   }
 
   getSwitchListModeWidget(){
@@ -132,42 +146,58 @@ class ProductsScreenState extends State<ProductsScreen> {
   }
 
   Widget getProductsListView(){
-    return isLoading
+    return isLoading && products.length == 0
         ? loadingWidget
         : products.length == 0
           ? emptyListWidget
-          : new ListView.builder(
-              itemCount: products.length,
-              itemBuilder: (context, index){
-                final double bottomMargin = index < (products.length - 1) ? 6 : 0;
-                return new ProductCard(
-                    products[index],
-                    bottomMargin: bottomMargin
-                );
+          : new RefreshIndicator(
+              child: new ListView.builder(
+                controller: scrollController,
+                itemCount: products.length,
+                itemBuilder: (context, index){
+                  final double bottomMargin = index < (products.length - 1) ? 6 : 0;
+                  return new ProductCard(
+                      products[index],
+                      bottomMargin: bottomMargin
+                  );
+                }
+              ),
+              onRefresh: () async {
+                products.clear();
+                await fetchProducts(1, awaitMode: true, updateStateInStart: false);
+                return null;
               }
             );
   }
 
   Widget getProductsGridView(){
-    return isLoading
+    return isLoading && products.length == 0
         ? loadingWidget
         : products.length == 0
           ? emptyListWidget
-          : new GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-              itemCount: products.length,
-              itemBuilder: (context, index){
-                final double endMargin = (index % 2) == 0 ? 6 : 0;
-                double bottomMargin;
-                if((products.length % 2) == 0)
-                  bottomMargin = index < (products.length - 2) ? 6 : 0;
-                else bottomMargin = index < (products.length - 1) ? 6 : 0;
+          : new RefreshIndicator(
+              child: new GridView.builder(
+                controller: scrollController,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                itemCount: products.length,
+                itemBuilder: (context, index){
+                  final double endMargin = (index % 2) == 0 ? 6 : 0;
+                  double bottomMargin;
+                  if((products.length % 2) == 0)
+                    bottomMargin = index < (products.length - 2) ? 6 : 0;
+                  else bottomMargin = index < (products.length - 1) ? 6 : 0;
 
-                return new ProductCard(
-                    products[index],
-                    bottomMargin: bottomMargin,
-                    endMargin: endMargin
-                );
+                  return new ProductCard(
+                      products[index],
+                      bottomMargin: bottomMargin,
+                      endMargin: endMargin
+                  );
+                }
+              ),
+              onRefresh: () async {
+                products.clear();
+                await fetchProducts(1, awaitMode: true, updateStateInStart: false);
+                return null;
               }
             );
   }
@@ -182,42 +212,75 @@ class ProductsScreenState extends State<ProductsScreen> {
     );
   }
 
-  fetchProducts(int page) {
-    setState(() => isLoading = true);
+  fetchProductsDone(int page, http.Response response){
+    if (response.statusCode == 200) {
+      print("Page $page fetched!");
+      currentPage = page;
+      final responseMap = json.decode(response.body);
+      lastPage = responseMap['data']['last_page'];
 
-    new Connectivity().checkConnectivity().then((connectivityResult){
-      if(connectivityResult != ConnectivityResult.none) {
-        http.get("$ROOCKET_PRODUCTS_URL$page").then((response) {
-          if (response.statusCode == 200) {
-            currentPage = page;
-            final responseMap = json.decode(response.body);
+      responseMap['data']['data'].forEach((item) {
+        if(item['price'] != "undefined")
+          products.add(RoocketProduct.fromJson(item));
+      });
+      print("Products: $products");
 
-            responseMap['data']['data'].forEach((item) {
-              if(item['price'] != "undefined")
-                products.add(RoocketProduct.fromJson(item));
-            });
-            print("Products: $products");
-          }
-          else {}
-          setState(() => isLoading = false);
-        }).catchError((exception) {
-          setState(() => isLoading = false);
-        });
+      if(products.length < 6 && currentPage < lastPage){
+        fetchProducts(currentPage + 1);
+        return;
       }
-      else {
-        showErrorSnackbar(
-            "عدم اتصال به اینترنت!",
-            Icons.wifi_lock,
-            duration: new Duration(hours: 2),
-            onTap: (){
-              scaffoldKey.currentState.hideCurrentSnackBar();
-              fetchProducts(page);
-            }
-        );
-        setState(() => isLoading = false);
-      }
-    });
+    }
+    else {}
+    setState(() => isLoading = false);
   }
+
+  fetchProductsNoInternet(int page){
+    showErrorSnackbar(
+        "عدم اتصال به اینترنت!",
+        Icons.wifi_lock,
+        duration: new Duration(hours: 2),
+        onTap: (){
+          scaffoldKey.currentState.hideCurrentSnackBar();
+          fetchProducts(page);
+        }
+    );
+    setState(() => isLoading = false);
+  }
+
+  fetchProductsError(Object exception){
+    setState(() => isLoading = false);
+  }
+
+  fetchProducts(int page, {bool awaitMode = false, updateStateInStart = true}) async {
+    if(updateStateInStart) setState(() => isLoading = true);
+    else isLoading = true;
+
+    if(!awaitMode) {
+      new Connectivity().checkConnectivity().then((connectivityResult) {
+        if (connectivityResult != ConnectivityResult.none) {
+          http.get("$ROOCKET_PRODUCTS_URL$page")
+              .then((response) => fetchProductsDone(page, response))
+              .catchError(fetchProductsError);
+        }
+        else fetchProductsNoInternet(page);
+      });
+    }
+    else {
+      final ConnectivityResult connectivityResult = await new Connectivity().checkConnectivity();
+      if (connectivityResult != ConnectivityResult.none) {
+        try {
+          final http.Response response = await http.get(
+              "$ROOCKET_PRODUCTS_URL$page");
+          fetchProductsDone(page, response);
+        }
+        catch (exception) {fetchProductsError(exception);}
+      }
+      else fetchProductsNoInternet(page);
+    }
+  }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class ProductCard extends StatelessWidget {
