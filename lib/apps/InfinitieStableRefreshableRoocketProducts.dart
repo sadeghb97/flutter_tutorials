@@ -116,34 +116,44 @@ class ProductsScreenState extends State<ProductsScreen> with AutomaticKeepAliveC
       primary: false,
       pinned: false,
       automaticallyImplyLeading: false,
-      actions: <Widget>[
-        new Padding(
-            padding: EdgeInsetsDirectional.only(end: 8),
-            child: new GestureDetector(
-                child: new Icon(
-                    Icons.view_stream,
-                    color: !gridViewMode ? Colors.grey[900] : Colors.grey[500]
-                ),
-                onTap: (){
-                  setState(() => gridViewMode = false);
-                }
-            )
-        ),
-        new Padding(
-            padding: EdgeInsetsDirectional.only(end: 8),
-            child: new GestureDetector(
-                child: new Icon(
-                    Icons.view_module,
-                    color: gridViewMode ? Colors.grey[900] : Colors.grey[500]
-                ),
-                onTap: (){
-                  setState(() => gridViewMode = true);
-                }
-            )
-        )
-      ]
+      title: new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          new Padding(
+              padding: EdgeInsetsDirectional.only(end: 8),
+              child: new GestureDetector(
+                  child: new Icon(
+                      Icons.view_stream,
+                      color: !gridViewMode ? Colors.grey[900] : Colors.grey[500],
+                      size: 35
+                  ),
+                  onTap: (){
+                    setState(() => gridViewMode = false);
+                  }
+              )
+          ),
+          new Padding(
+              padding: EdgeInsetsDirectional.only(end: 8),
+              child: new GestureDetector(
+                  child: new Icon(
+                      Icons.view_module,
+                      color: gridViewMode ? Colors.grey[900] : Colors.grey[500],
+                      size: 35
+                  ),
+                  onTap: (){
+                    setState(() => gridViewMode = true);
+                  }
+              )
+          )
+        ],
+      ),
     );
   }
+
+  //set kardane controller ruye in listview baes mishavad
+  //ke sliver appbar darune nested scroll view dar zamane scroll hide nashavad
+  //dar inja ma in kar ra karde im pas bar khalafe mesale roocket productse mamuli
+  //sliver appbar hide nemishavad
 
   Widget getProductsListView(){
     return isLoading && products.length == 0
