@@ -244,7 +244,6 @@ class WhatsappCheckConnectionLoginBodyState extends State<WhatsappCheckConnectio
                             borderRadius: new BorderRadius.circular(20)
                           ),
                           onPressed: () async {
-                            setState(() => loading = true);
                             formKey.currentState.save();
                             print("Email Value: $emailValue");
                             print("Password Value: $passwordValue");
@@ -252,6 +251,7 @@ class WhatsappCheckConnectionLoginBodyState extends State<WhatsappCheckConnectio
                             bool validated = formKey.currentState.validate();
 
                             if(validated && await checkConnectivity()) {
+                              setState(() => loading = true);
                               http.post(
                                   LOGIN_REQUEST_URL,
                                   body: {
@@ -283,9 +283,12 @@ class WhatsappCheckConnectionLoginBodyState extends State<WhatsappCheckConnectio
                                       Icons.sentiment_dissatisfied
                                   );
                                 }
+
+                                setState(() => loading = false);
                               }).catchError((exception){
                                 print(exception.message);
                                 showErrorSnackbar("مشکلی در احراز هویت شما پیش آمده است!", Icons.error);
+                                setState(() => loading = false);
                               });
                             }
                           }
