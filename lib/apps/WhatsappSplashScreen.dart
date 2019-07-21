@@ -168,7 +168,7 @@ class WhatsappBodyState extends State<WhatsappBody> with SingleTickerProviderSta
                       value: "quit",
                       child: new Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[new Text("خروج به منو")]
+                          children: <Widget>[new Text("باز کردن منو")]
                       )
                   )
                 ];

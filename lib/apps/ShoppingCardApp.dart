@@ -14,7 +14,7 @@ class ShoppingCardApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        title: "MaterialApp",
+        title: "Shopping Cards",
         home: new ShoppingCardScaffold(products)
     );
   }
