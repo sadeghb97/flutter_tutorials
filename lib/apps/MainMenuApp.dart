@@ -25,6 +25,7 @@ import 'WhatsappFullNavigations.dart';
 import 'RoocketProducts.dart';
 import 'InfinitieStableRefreshableRoocketProducts.dart';
 import 'HandledBackButtonShoppingCard.dart';
+import 'SQLiteISRRoocketProducts.dart';
 
 class Route{
   String name;
@@ -56,7 +57,8 @@ List routes = [
   Route("Whatsapp Full Navigations", new WhatsappFullNavigationsApp()),
   Route("Roocket Products Grid View", new RoocketProductsApp()),
   Route("Infinitie Stable and Refreshable Roocket Products", new InfinitieStableRoocketProductsApp()),
-  Route("Handled Back Button Shopping Items", new HandledBackButtonShoppingCardsApp())
+  Route("Handled Back Button Shopping Items", new HandledBackButtonShoppingCardsApp()),
+  Route("SQLite Storing ISR Roocket Products", new SqliteISRRoocketProductsApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
