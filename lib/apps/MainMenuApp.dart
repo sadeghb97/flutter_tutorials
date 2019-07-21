@@ -24,6 +24,7 @@ import 'WhatsappCheckConnectionLogin.dart';
 import 'WhatsappFullNavigations.dart';
 import 'RoocketProducts.dart';
 import 'InfinitieStableRefreshableRoocketProducts.dart';
+import 'HandledBackButtonShoppingCard.dart';
 
 class Route{
   String name;
@@ -54,7 +55,8 @@ List routes = [
   Route("Whatsapp Check Connection", new WhatsappCheckConnectionLoginApp()),
   Route("Whatsapp Full Navigations", new WhatsappFullNavigationsApp()),
   Route("Roocket Products Grid View", new RoocketProductsApp()),
-  Route("Infinitie Stable and Refreshable Roocket Products", new InfinitieStableRoocketProductsApp())
+  Route("Infinitie Stable and Refreshable Roocket Products", new InfinitieStableRoocketProductsApp()),
+  Route("Handled Back Button Shopping Items", new HandledBackButtonShoppingCardsApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
