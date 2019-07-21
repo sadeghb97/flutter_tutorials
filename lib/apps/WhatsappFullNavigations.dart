@@ -66,32 +66,34 @@ class WhatsappSplashScreenBodyState extends State<WhatsappSplashScreenBody> {
     Duration duration = new Duration(milliseconds: 1500);
     new Timer(
       duration,
-      (){
-        SharedPreferences.getInstance().then((prefs){
-          final String apiToken = prefs.getString("whatsapp_api_token");
-          if(apiToken == null) navigateToLoginRoute(context);
-          else {
-            print("apiTooken: $apiToken");
-            print(CHECK_API_TOKEN_URL + apiToken);
-            http.get(
-                CHECK_API_TOKEN_URL + apiToken,
-                headers: {'Accept': 'application/json'}
-            ).then((response) {
-              final responseMap = json.decode(response.body);
-              print(responseMap);
-
-              if(response.statusCode == 200) {
-                Navigator.pushReplacementNamed(
-                    context,
-                    WhatsappFullNavigationsApp.MAIN_ROUTE
-                );
-              }
-              else navigateToLoginRoute(context);
-            });
-          }
-        });
-      }
+      () => SharedPreferences.getInstance().then(authUser)
     );
+  }
+
+  authUser(SharedPreferences prefs){
+    final String apiToken = prefs.getString("whatsapp_api_token");
+    if(apiToken == null) navigateToLoginRoute(context);
+    else {
+      print("apiTooken: $apiToken");
+      print(CHECK_API_TOKEN_URL + apiToken);
+      http.get(
+          CHECK_API_TOKEN_URL + apiToken,
+          headers: {'Accept': 'application/json'}
+      ).then((response) {
+        final responseMap = json.decode(response.body);
+        print(responseMap);
+
+        if(response.statusCode == 200) {
+          Navigator.pushReplacementNamed(
+              context,
+              WhatsappFullNavigationsApp.MAIN_ROUTE
+          );
+        }
+        else navigateToLoginRoute(context);
+      }).catchError((exception){
+        new Timer(new Duration(milliseconds: 2000), () => authUser(prefs));
+      });
+    }
   }
 
   navigateToLoginRoute(BuildContext context){
@@ -207,7 +209,7 @@ class WhatsappBodyState extends State<WhatsappBody> with SingleTickerProviderSta
                       value: "quit",
                       child: new Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[new Text("بازگشت به منو")]
+                          children: <Widget>[new Text("باز کردن منو")]
                       )
                   ),
                   new PopupMenuItem(
@@ -233,9 +235,11 @@ class WhatsappBodyState extends State<WhatsappBody> with SingleTickerProviderSta
                   );
                 }
                 else if(selected == "quit") {
-                  Navigator.pushReplacementNamed(
+                  Navigator.pushReplacement(
                       context,
-                      WhatsappFullNavigationsApp.MAIN_ROUTE
+                      new MaterialPageRoute(
+                          builder: (context) => new MainMenuRoute()
+                      )
                   );
                 }
                 else if(selected == "logout") {
