@@ -26,6 +26,7 @@ import 'RoocketProducts.dart';
 import 'InfinitieStableRefreshableRoocketProducts.dart';
 import 'HandledBackButtonShoppingCard.dart';
 import 'SQLiteISRRoocketProducts.dart';
+import 'GoogleMapStart.dart';
 
 class Route{
   String name;
@@ -58,7 +59,8 @@ List routes = [
   Route("Roocket Products Grid View", new RoocketProductsApp()),
   Route("Infinitie Stable and Refreshable Roocket Products", new InfinitieStableRoocketProductsApp()),
   Route("Handled Back Button Shopping Items", new HandledBackButtonShoppingCardsApp()),
-  Route("SQLite Storing ISR Roocket Products", new SqliteISRRoocketProductsApp())
+  Route("SQLite Storing ISR Roocket Products", new SqliteISRRoocketProductsApp()),
+  Route("First Google Map App", new FirstGoogleMapApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
