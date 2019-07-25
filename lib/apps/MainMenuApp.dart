@@ -29,6 +29,7 @@ import 'SQLiteISRRoocketProducts.dart';
 import 'GoogleMapStart.dart';
 import 'GoogleMapUsingOptions.dart';
 import 'FlutterMapForAlternative.dart';
+import 'DrawerLayout.dart';
 
 class Route{
   String name;
@@ -64,7 +65,8 @@ List routes = [
   Route("SQLite Storing ISR Roocket Products", new SqliteISRRoocketProductsApp()),
   Route("First Google Map App", new FirstGoogleMapApp()),
   Route("Google Maps With Take Location", new GoogleMapOptionsApp()),
-  Route("Flutter Map App For Alternative", new FlutterMapApp())
+  Route("Flutter Map App For Alternative", new FlutterMapApp()),
+  Route("My Fav Apps With Drawer Layout", new DrawerLayoutApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
