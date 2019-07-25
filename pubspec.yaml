@@ -30,10 +30,11 @@ dependencies:
   http: ^0.12.0+2
   shared_preferences: ^0.5.3+4
   connectivity: ^0.4.3+6
-  cached_network_image: ^1.1.0
+  cached_network_image: ^0.8.0
   sqflite: ^1.1.6+2
   google_maps_flutter: ^0.5.19+2
   permission_handler: ^3.2.1+1
+  flutter_map: ^0.6.1+2
 
 dev_dependencies:
   flutter_test:
