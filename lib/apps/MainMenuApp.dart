@@ -31,6 +31,7 @@ import 'GoogleMapUsingOptions.dart';
 import 'FlutterMapForAlternative.dart';
 import 'DrawerLayout.dart';
 import 'StartCamera.dart';
+import 'RecordVideoWithCamera.dart';
 
 class Route{
   String name;
@@ -68,7 +69,8 @@ List routes = [
   Route("Google Maps With Take Location", new GoogleMapOptionsApp()),
   Route("Flutter Map App For Alternative", new FlutterMapApp()),
   Route("My Fav Apps With Drawer Layout", new DrawerLayoutApp()),
-  Route("Take Image With Camera App", new FirstCameraApp())
+  Route("Take Image With Camera App", new FirstCameraApp()),
+  Route("Camera Recording Video App", new CameraRecordingVideoApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
