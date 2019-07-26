@@ -30,6 +30,7 @@ import 'GoogleMapStart.dart';
 import 'GoogleMapUsingOptions.dart';
 import 'FlutterMapForAlternative.dart';
 import 'DrawerLayout.dart';
+import 'StartCamera.dart';
 
 class Route{
   String name;
@@ -66,7 +67,8 @@ List routes = [
   Route("First Google Map App", new FirstGoogleMapApp()),
   Route("Google Maps With Take Location", new GoogleMapOptionsApp()),
   Route("Flutter Map App For Alternative", new FlutterMapApp()),
-  Route("My Fav Apps With Drawer Layout", new DrawerLayoutApp())
+  Route("My Fav Apps With Drawer Layout", new DrawerLayoutApp()),
+  Route("Take Image With Camera App", new FirstCameraApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
