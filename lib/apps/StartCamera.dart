@@ -81,6 +81,12 @@ class CameraAppBodyState extends State<CameraAppBody>{
   }
 
   @override
+  void dispose() {
+    cameraController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return new Scaffold(
       key: scaffoldKey,
