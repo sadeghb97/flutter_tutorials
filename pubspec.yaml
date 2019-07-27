@@ -39,6 +39,7 @@ dependencies:
   path_provider: ^0.5.0+1
   thumbnails: ^1.0.1
   flutter_image_compress: ^0.6.3
+  video_player: ^0.10.1+5
 
 dev_dependencies:
   flutter_test:

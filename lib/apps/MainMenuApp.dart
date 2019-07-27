@@ -33,6 +33,7 @@ import 'DrawerLayout.dart';
 import 'StartCamera.dart';
 import 'RecordVideoWithCamera.dart';
 import 'CameraWithTakenMediasPreviews.dart';
+import 'CameraWithPlayMedia.dart';
 
 class Route{
   String name;
@@ -72,7 +73,8 @@ List routes = [
   Route("My Fav Apps With Drawer Layout", new DrawerLayoutApp()),
   Route("Take Image With Camera App", new FirstCameraApp()),
   Route("Camera Recording Video App", new CameraRecordingVideoApp()),
-  Route("Camera With Taken Medias Previews", new CameraTakenMediasPreviewsApp())
+  Route("Camera With Taken Medias Previews", new CameraTakenMediasPreviewsApp()),
+  Route("Camera With Play Media App", new CameraWithPlayMediaApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
