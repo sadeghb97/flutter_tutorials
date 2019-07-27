@@ -36,7 +36,7 @@ class WhatsappFullNavigationsApp extends StatelessWidget {
         routes: {
           MAIN_ROUTE: (context) => new Directionality(
               textDirection: TextDirection.rtl,
-              child: new WhatsappBody()
+              child: new WhatsappFullNavigationsBody()
           ),
           SPLASH_SCREEN_ROUTE: (context) => new Directionality(
               textDirection: TextDirection.rtl,
@@ -147,15 +147,17 @@ class WhatsappSplashScreenBodyState extends State<WhatsappSplashScreenBody> {
   }
 }
 
-class WhatsappBody extends StatefulWidget {
+class WhatsappFullNavigationsBody extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return new WhatsappBodyState();
+    return new WhatsappFullNavigationsBodyState();
   }
 }
 
 //single tricker ra baraye tabcontroller niaz darim
-class WhatsappBodyState extends State<WhatsappBody> with SingleTickerProviderStateMixin {
+class WhatsappFullNavigationsBodyState extends State<WhatsappFullNavigationsBody>
+    with SingleTickerProviderStateMixin {
+
   static final String MAIN_CONTENT = "main_content";
   static final String SEARCH_CONTENT = "search_content";
   TabController tabController;

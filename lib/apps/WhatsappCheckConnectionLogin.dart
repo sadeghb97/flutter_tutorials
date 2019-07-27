@@ -10,6 +10,26 @@ import 'package:first_flutter/apps/WhatsappNavigations.dart';
 
 final String LOGIN_REQUEST_URL = "http://roocket.org/api/login";
 
+//az in file dar do barname digar ta konun estefade shode ast
+//WhatsappFullComplementWithCamera.dart
+//va
+//WhatsappFullNavigations.dart
+//dar do faile namborde in file import shode ast
+//va az WhatsappCheckConnectionLoginBody dar in file be onvane yeki az route ha estefade shode ast
+//nokte mohem in hast ke agar mostaghiman appe in file baz shavad
+//zamani ke mikhahim be route main beravim route main barnameye hamin file
+//baz mishavad. vali agar barname haye an do file baz shode bashad
+//va sepas vared screene WhatsappCheckConnectionLoginBody in file shavim
+//dar zamane raftan be /main be route maine an do barname khahim raft
+//zira dar ane vahed yek barname dar hale ejra darim
+//va vaghti mikhahim az route ha estefade konim in route ha haman haei hastand
+//ke dar classe extend shode az material app tarif karde im va barname an ham aknun dar hale ejrast
+//faghat in nokte mohem ast ke name route main dar har se in file ha yeki ast
+//agar file sevomi ham in file ra import konad hamin ghaede pabarjast
+
+//tozihate bala ghablan raayat nashode bud ke hala dar akharin commit
+//dorost shode ast
+
 class WhatsappCheckConnectionLoginApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,10 +41,16 @@ class WhatsappCheckConnectionLoginApp extends StatelessWidget {
             accentColor: Color(0xff25d366),
             fontFamily: "Vazir"
         ),
-        home: new Directionality(
+        routes: {
+          '/': (context) => new Directionality(
             textDirection: TextDirection.rtl,
             child: new WhatsappCheckConnectionLoginBody()
-        )
+          ),
+          '/main': (context) => new Directionality(
+            textDirection: TextDirection.rtl,
+            child: new WhatsappBody()
+          )
+        },
     );
   }
 }
@@ -271,11 +297,7 @@ class WhatsappCheckConnectionLoginBodyState extends State<WhatsappCheckConnectio
                                       responseMap['data']['api_token']
                                   );
 
-                                  Navigator.of(context).pushReplacement(
-                                      new MaterialPageRoute(
-                                          builder: (context) => new WhatsappNavigationsApp()
-                                      )
-                                  );
+                                  Navigator.of(context).pushReplacementNamed("/main");
                                 }
                                 else {
                                   showErrorSnackbar(
