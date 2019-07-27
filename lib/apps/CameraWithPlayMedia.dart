@@ -208,7 +208,9 @@ class CameraAppBodyState extends State<CameraAppBody>{
                       scaffoldKey,
                       takenPicName,
                       Icons.image,
-                      direction: TextDirection.ltr
+                      direction: TextDirection.ltr,
+                      duration: new Duration(seconds: 2),
+                      hideCurrentSnackbar: true
                     );
 
                     final Directory tempDir = await getTemporaryDirectory();
@@ -244,13 +246,15 @@ class CameraAppBodyState extends State<CameraAppBody>{
                       return;
                     }
                     String takenVidName = takenVidPath.substring(
-                        takenVidPath.lastIndexOf("/") + 1
+                      takenVidPath.lastIndexOf("/") + 1
                     );
                     showSnackbar(
                       scaffoldKey,
                       takenVidName,
                       Icons.videocam,
-                      direction: TextDirection.ltr
+                      direction: TextDirection.ltr,
+                        duration: new Duration(seconds: 2),
+                      hideCurrentSnackbar: true
                     );
 
                     final Directory tempDir = await getTemporaryDirectory();
@@ -322,7 +326,8 @@ class CameraAppBodyState extends State<CameraAppBody>{
       showSnackbar(
         scaffoldKey,
         'شما قادر به تغییر دوربین نیستید !',
-        Icons.info
+        Icons.info,
+        duration: new Duration(seconds: 2)
       );
     }
   }
