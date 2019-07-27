@@ -37,6 +37,8 @@ dependencies:
   flutter_map: ^0.6.1+2
   camera: ^0.5.2+2
   path_provider: ^0.5.0+1
+  thumbnails: ^1.0.1
+  flutter_image_compress: ^0.6.3
 
 dev_dependencies:
   flutter_test:

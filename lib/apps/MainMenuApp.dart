@@ -32,6 +32,7 @@ import 'FlutterMapForAlternative.dart';
 import 'DrawerLayout.dart';
 import 'StartCamera.dart';
 import 'RecordVideoWithCamera.dart';
+import 'CameraWithTakenMediasPreviews.dart';
 
 class Route{
   String name;
@@ -70,7 +71,8 @@ List routes = [
   Route("Flutter Map App For Alternative", new FlutterMapApp()),
   Route("My Fav Apps With Drawer Layout", new DrawerLayoutApp()),
   Route("Take Image With Camera App", new FirstCameraApp()),
-  Route("Camera Recording Video App", new CameraRecordingVideoApp())
+  Route("Camera Recording Video App", new CameraRecordingVideoApp()),
+  Route("Camera With Taken Medias Previews", new CameraTakenMediasPreviewsApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
