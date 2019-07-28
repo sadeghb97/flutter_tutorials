@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+servers/chat_server/node_modules
 
 # IntelliJ related
 *.iml

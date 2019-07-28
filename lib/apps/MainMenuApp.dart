@@ -35,6 +35,7 @@ import 'RecordVideoWithCamera.dart';
 import 'CameraWithTakenMediasPreviews.dart';
 import 'CameraWithPlayMedia.dart';
 import 'WhatsappFullComplementWithCamera.dart';
+import 'SocketIoApp.dart';
 
 class Route{
   String name;
@@ -76,7 +77,8 @@ List routes = [
   Route("Camera Recording Video App", new CameraRecordingVideoApp()),
   Route("Camera With Taken Medias Previews", new CameraTakenMediasPreviewsApp()),
   Route("Camera With Play Media App", new CameraWithPlayMediaApp()),
-  Route("Whatsapp Full Complement With Camera", new WhatsappFullComplementWithCameraApp())
+  Route("Whatsapp Full Complement With Camera", new WhatsappFullComplementWithCameraApp()),
+  Route("Chat Room App", new ChatRoomWithSocketIOApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{
