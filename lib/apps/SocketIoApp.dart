@@ -176,7 +176,7 @@ class ChatRoomScreenState extends State<ChatRoomScreen> {
                         margin: const EdgeInsets.only(bottom: 5),
                         padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
                         decoration: new BoxDecoration(
-                          color: socketAppUserId == messages[index].id
+                          color: socketAppUserId == messages[index].senderId
                             ? Colors.greenAccent
                             : Colors.white
                         ),
@@ -220,7 +220,7 @@ class ChatRoomScreenState extends State<ChatRoomScreen> {
                           setState(() {
                             messages.add(
                               SocketMessage(
-                                id : socketAppUserId,
+                                senderId : socketAppUserId,
                                 message: message
                               )
                             );
@@ -285,7 +285,7 @@ class ChatRoomScreenState extends State<ChatRoomScreen> {
     setState(() {
       messages.add(
         new SocketMessage(
-          id : msg['id'],
+          senderId : msg['id'],
           message: msg['message']
         )
       );

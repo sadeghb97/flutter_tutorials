@@ -10,7 +10,11 @@ class ChatModel {
 }
 
 class SocketMessage {
-  final int id;
+  final int senderId;
   final String message;
-  SocketMessage({this.id, this.message});
+  final String messageId;
+  bool acknowledgement = false;
+
+  SocketMessage({this.senderId, this.message}) :
+      messageId = "$senderId-${DateTime.now().microsecondsSinceEpoch}";
 }
