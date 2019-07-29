@@ -93,6 +93,7 @@ class ImagePickerBodyState extends State<ImagePickerBody> {
               pickMedia(ImageSource.gallery, true);
             },
             child: Icon(Icons.photo_library),
+            heroTag: null
           ),
           new SizedBox(height: 16),
           FloatingActionButton(
@@ -100,6 +101,7 @@ class ImagePickerBodyState extends State<ImagePickerBody> {
               pickMedia(ImageSource.camera, true);
             },
             child: Icon(Icons.camera_alt),
+            heroTag: null
           ),
           new SizedBox(height: 16),
           FloatingActionButton(
@@ -108,6 +110,7 @@ class ImagePickerBodyState extends State<ImagePickerBody> {
               pickMedia(ImageSource.gallery, false);
             },
             child: Icon(Icons.video_library),
+            heroTag: null
           ),
           new SizedBox(height: 16),
           FloatingActionButton(
@@ -116,9 +119,10 @@ class ImagePickerBodyState extends State<ImagePickerBody> {
               pickMedia(ImageSource.camera, false);
             },
             child: Icon(Icons.videocam),
-          ),
-        ],
-      ),
+            heroTag: null
+          )
+        ]
+      )
     );
   }
 
