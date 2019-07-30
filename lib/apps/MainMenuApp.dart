@@ -38,6 +38,7 @@ import 'WhatsappFullComplementWithCamera.dart';
 import 'SocketIoApp.dart';
 import 'SocketChatRoomWithAcc.dart';
 import 'ImagePickerApp.dart';
+import 'MultiLanguageGreeting.dart';
 
 class Route{
   String name;
@@ -82,7 +83,8 @@ List routes = [
   Route("Whatsapp Full Complement With Camera", new WhatsappFullComplementWithCameraApp()),
   Route("Chat Room App", new ChatRoomWithSocketIOApp()),
   Route("Chat Room With Acc App", new SocketChatRoomWithAccApp()),
-  Route("Media Loader And Image Picker", new ImagePickerApp())
+  Route("Media Loader And Image Picker", new ImagePickerApp()),
+  Route("Multi Language Greeting App", new MultiLanguageGreetingApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{

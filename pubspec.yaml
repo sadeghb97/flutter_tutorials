@@ -19,9 +19,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   font_awesome_flutter: ^8.4.0
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -62,6 +63,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/insta_logo.png
+    - assets/images/greeting_icon.png
     - assets/images/whatsapp_icon.png
     - assets/images/wpvc_bg.jpg
     - assets/images/nice_wallpaper.jpg
@@ -90,7 +92,13 @@ flutter:
     - assets/images/manchesterunited_post_image.jpg
     - assets/images/433_post_image.jpg
     - assets/images/jadijadinet_post_image.jpg
-  #  - images/a_dot_ham.jpeg
+    - assets/locale/i18n_en.json
+    - assets/locale/i18n_fa.json
+    - assets/locale/i18n_de.json
+    - assets/locale/i18n_fr.json
+    - assets/locale/i18n_es.json
+    - assets/locale/i18n_zh-Hans.json
+    - assets/locale/i18n_ar.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

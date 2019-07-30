@@ -1,0 +1,16 @@
+{
+  "language_direction": "ltr",
+  "app_title": "Gruß",
+  "persian_language": "Persisch",
+  "english_language": "Englisch",
+  "german_language": "Deutsch",
+  "french_language": "Französisch",
+  "spanish_language": "Spanisch",
+  "arabic_language": "Arabisch",
+  "chinese_language": "Chinesisch",
+  "clear_default": "Standard Löschen",
+  "hello": "Hallo!",
+  "goog_morning": "Guten morgen.",
+  "how_are_you": "Wie geht es dir?",
+  "goodbye": "Auf Wiedersehen"
+}
