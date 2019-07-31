@@ -39,6 +39,7 @@ import 'SocketIoApp.dart';
 import 'SocketChatRoomWithAcc.dart';
 import 'ImagePickerApp.dart';
 import 'MultiLanguageGreeting.dart';
+import 'FirebaseMessagingApp.dart';
 
 class Route{
   String name;
@@ -84,7 +85,8 @@ List routes = [
   Route("Chat Room App", new ChatRoomWithSocketIOApp()),
   Route("Chat Room With Acc App", new SocketChatRoomWithAccApp()),
   Route("Media Loader And Image Picker", new ImagePickerApp()),
-  Route("Multi Language Greeting App", new MultiLanguageGreetingApp())
+  Route("Multi Language Greeting App", new MultiLanguageGreetingApp()),
+  Route("Firebase Messaging App", new FirebaseMessagingApp())
 ];
 
 class MainMenuRoute extends StatelessWidget{

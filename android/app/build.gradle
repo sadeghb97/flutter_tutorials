@@ -55,11 +55,15 @@ android {
     }
 }
 
+apply plugin: 'com.google.gms.google-services'
+
 flutter {
     source '../..'
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-core:17.0.1'
+    implementation 'com.google.firebase:firebase-messaging:19.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
